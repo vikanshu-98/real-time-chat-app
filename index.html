@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealTime Chat application</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 ">
+                <div class="main-section"><img src="/img/chat.png"/><span>RealTime Chat application</span></div>
+                <div class="message-area">  
+                    <div class="receiver-block" id="receiver_blocks"> 
+                        <div class="img-row recevier-message"> 
+                        </div> 
+                    </div>
+                    <div class="sender-block" id="sender_blocks">
+                        <div class="img-row sender-message"> 
+                        </div>
+                    </div>
+ 
+                </div> 
+                <div class="send-message">
+                    <!-- <textarea rows="2" cols="100" placeholder="Type a message">sas</textarea> -->
+                    <input type="text" name="Message" id="message" placeholder="Type a message"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+    <script src="../jq/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+</body>
+</html>
