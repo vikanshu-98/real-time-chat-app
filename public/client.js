@@ -64,8 +64,7 @@ const appendHtml = function(name,enterValue,messageSender){
 
 socket.on('connect',()=>{
     console.log(socket.id);
-    socket.on('totalOnlineUser',(data)=>{  
-        console.log(data);
+    socket.on('totalOnlineUser',(data)=>{
         document.getElementById('totalOnline').innerHTML= `${data.length} online`
     })
 
