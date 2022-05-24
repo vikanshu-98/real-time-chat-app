@@ -7,7 +7,7 @@
     box-sizing: border-box;
     font-family: 'Piazzolla', serif;
 }
-.main-section img{
+.main-section .chat{
     width: 90px; 
     padding: 10px;
 }
@@ -130,10 +130,10 @@ html{
 .main-section{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
-.main-section img{
+.main-section .chat{
     transition: all linear;
     animation: rot 6s linear infinite;
 }
@@ -153,10 +153,69 @@ html{
 }
 
 
+.main-section .default{
+    width: 70px;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.avatar-row{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 48%;
+    padding: 0 2rem;
+}
+.online-sign{
+    border-radius: 50%;
+    background-color: #297529; 
+    border: 2px #297529 solid;
+    padding: 4px;
+    position: absolute;
+    right: 11.5rem;
+    top: 5rem;
+}
+.main-section .total-online{
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+.main-section .total-online{
+    animation: slide 3s linear infinite alternate;
+}
+
+@keyframes slide{
+    0%{
+        transform: translateX(20%);
+    }
+    100%{
+        transform: translateX(-0%);
+    }
+}
 @media(max-width:768px){
     .col-md-10 {
         width: 100%;
-        height: 100%;
+        height: 96%;
         border-radius:0;
     }
+    .main-section,.avatar-row{
+        flex-direction: column;
+    }
+    .main-section .total-online{
+        animation: none;
+    }
+    .main-section .chat{
+        width: 64px;
+    }
+    .main-section span{
+        font-size: 1.8rem;
+    }
+    .message-area {
+        height: 65%;
+    }
+    .online-sign{
+        right: 7.5rem;
+    }
 }
+
+

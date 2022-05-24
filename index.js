@@ -1,24 +1,32 @@
 const express =  require('express')
 const path     = require('path')
+const hbs      = require('hbs')
 const app     = express() 
 const httpServer  = require('http').createServer(app);
 const port   = process.env.PORT ||3300
- 
 
 app.use(express.static(__dirname+'/public'))
-app.get('/',(req,res)=>{ 
-    res.sendFile(__dirname+'/index.html') 
-})
+app.set('view engine','hbs')
 
+app.get('/',(req,res)=>{
+    res.render('index')
+})
+var onlineUsers =[]
 const io =require('socket.io')(httpServer)
-io.on('connection',(socket)=>{ 
-    console.log(socket.id);
+io.on('connection',(socket)=>{  
+    onlineUsers.push(socket.id);
+    io.sockets.emit('totalOnlineUser',onlineUsers);
     socket.on('message',(message)=>{
         socket.broadcast.emit('message',message);
     })
+
+    socket.on('disconnect',function(){
+        let id=onlineUsers.indexOf(socket.id)
+        onlineUsers.splice(id,1)
+        io.sockets.emit('totalOnlineUser',onlineUsers);
+    })
  
 })
-
  
 
 // const io =require('socket.io')(httpServer);

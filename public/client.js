@@ -64,6 +64,16 @@ const appendHtml = function(name,enterValue,messageSender){
 
 socket.on('connect',()=>{
     console.log(socket.id);
+    socket.on('totalOnlineUser',(data)=>{  
+        console.log(data);
+        document.getElementById('totalOnline').innerHTML= `${data.length} online`
+    })
+
+    
+    socket.on('message',(object)=>{ 
+        appendHtml(object.name,object.msg,object.by)
+    });
+
 })
 
 const sendMessage = function(object){
@@ -77,7 +87,6 @@ const sendMessage = function(object){
 //     console.log(err.data);
 // })
 
+ 
 
-socket.on('message',(object)=>{ 
-    appendHtml(object.name,object.msg,object.by)
-});
+ 
